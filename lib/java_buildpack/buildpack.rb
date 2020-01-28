@@ -96,7 +96,7 @@ module JavaBuildpack
       payload = {
         'addons' => [],
         'config_vars' => {},
-        'default_process_types' => { 'web' => command, 'task' => command }
+        'default_process_types' => { 'web' => 'currHardLimit=$(ulimit -Hc) && ulimit -Sc "${currHardLimit}" && ' + command, 'task' => 'urrHardLimit=$(ulimit -Hc) && ulimit -Sc "${currHardLimit}" && ' + command }
       }.to_yaml
 
       @logger.debug { "Release Payload:\n#{payload}" }
